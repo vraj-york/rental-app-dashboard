@@ -14,14 +14,14 @@ import {
 import { Home, LayoutGrid, LogOut, Settings } from "lucide-react";
 import Image from "next/image";
 import Cookie from "js-cookie";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { use } from "react";
 
 export function AppSidebar() {
   // Menu items.
 
   const route = useRouter();
+  const pathname = usePathname();
   const items = [
     {
       title: "Dashboard",
@@ -33,11 +33,6 @@ export function AppSidebar() {
       url: "/properties",
       icon: Home,
     },
-    // {
-    //   title: "Settings",
-    //   url: "/settings",
-    //   icon: Settings,
-    // },
   ];
 
   const handleLogout = () => {
@@ -60,7 +55,14 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={
+                      item.url === "/"
+                        ? pathname === item.url
+                        : pathname?.startsWith(item.url)
+                    }
+                  >
                     <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>

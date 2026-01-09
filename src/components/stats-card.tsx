@@ -29,12 +29,6 @@ export default function StatsCard({
         </CardTitle>
         <CardAction>{action}</CardAction>
       </CardHeader>
-      <CardFooter className="flex-col items-start text-sm">
-        {/* <div className="line-clamp-1 flex gap-2 font-medium">
-          Trending up this month <TrendingUp className="size-4" />
-        </div> */}
-        <div className="text-muted-foreground">{description}</div>
-      </CardFooter>
     </Card>
   );
 }

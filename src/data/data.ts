@@ -1,3 +1,4 @@
+
 import { getActiveListingTotal, getDashboardPropertiesTotal, getDashboardTotals } from "@/utils/dashboard";
 
 export const chartData = [
@@ -227,29 +228,29 @@ export const properties = [
   },
 ]
 
-const { totalVisitors, totalInquiries } = getDashboardTotals(chartData);
-const totalProperties = getDashboardPropertiesTotal(properties);
-const ActiveProperteis= getActiveListingTotal(properties) 
+// const { totalVisitors, totalInquiries } = getDashboardTotals(chartData);
+// const totalProperties = getDashboardPropertiesTotal(properties);
+// const ActiveProperteis= getActiveListingTotal(properties) 
 
-export const dashboardStats = [
-  {
-    title: "Total Enquiries",
-    description: "Total number of enquiries",
-    value: totalInquiries,
-  },
-  {
-    title: "Total Visitors",
-    description: "Total number of visitors",
-    value: totalVisitors,
-  },
-  {
-    title: "Total Properties",
-    description: "Total number of properties",
-    value: totalProperties,
-  },
-  {
-    title: "Active Listings",
-    description: "Total number of active listings",
-    value: ActiveProperteis,
-  },
-];
+// export const dashboardStats = [
+//   {
+//     title: "Total Inquiries",
+//     description: "Total number of inquiries",
+//     value: totalInquiries,
+//   },
+//   {
+//     title: "Total Visitors",
+//     description: "Total number of visitors",
+//     value: totalVisitors,
+//   },
+//   {
+//     title: "Total Properties",
+//     description: "Total number of properties",
+//     value: totalProperties,
+//   },
+//   {
+//     title: "Active Listings",
+//     description: "Total number of active listings",
+//     value: ActiveProperteis,
+//   },
+// ];
