@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { inquiries } from "@/constants/data";
+import { inquiries } from "@/data/data";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 
@@ -31,37 +31,37 @@ export default function InquiresTable() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {inquiries.map((invoice) => (
-                <TableRow key={invoice.id}>
-                  <TableCell>{invoice.userName}</TableCell>
+              {inquiries.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell>{item.userName}</TableCell>
                   <TableCell>
                     {(() => {
-                      switch (invoice.status) {
+                      switch (item.status) {
                         case "New":
                           return (
-                            <Badge variant={"default"} className="bg-blue-500">
-                              {invoice.status}
+                            <Badge
+                              variant={"default"}
+                              className="bg-blue-100 text-blue-700 border-blue-200"
+                            >
+                              {item.status}
                             </Badge>
                           );
                         case "Contacted":
                           return (
                             <Badge
                               variant={"outline"}
-                              className="bg-yellow-300"
+                              className="bg-amber-100 text-amber-700 border-amber-200"
                             >
-                              {invoice.status}
+                              {item.status}
                             </Badge>
                           );
                         case "Closed":
                           return (
-                            <Badge variant={"outline"} className="bg-green-400">
-                              {invoice.status}
-                            </Badge>
-                          );
-                        case "Pending":
-                          return (
-                            <Badge variant={"outline"} className="bg-blue">
-                              {invoice.status}
+                            <Badge
+                              variant={"outline"}
+                              className="bg-green-100 text-green-700 border-green-200"
+                            >
+                              {item.status}
                             </Badge>
                           );
                         default:
@@ -69,9 +69,9 @@ export default function InquiresTable() {
                       }
                     })()}
                   </TableCell>
-                  <TableCell>{invoice.propertyName}</TableCell>
+                  <TableCell>{item.propertyName}</TableCell>
                   <TableCell className="flex items-center">
-                    {invoice.contactNumber}
+                    {item.contactNumber}
                   </TableCell>
                 </TableRow>
               ))}
