@@ -23,47 +23,36 @@ import { useMemo, useState } from "react";
 export default function Page() {
   const [timeRange, setTimeRange] = useState<"7d" | "30d" | "90d">("90d");
 
-  const filteredChartData = useMemo(() => {
-    return filterChartDataByTimeRange(chartData, timeRange);
-  }, [timeRange]);
+  const filteredChartData = filterChartDataByTimeRange(chartData, timeRange);
 
-  const { totalVisitors, totalInquiries } = useMemo(() => {
-    return getDashboardTotals(filteredChartData);
-  }, [filteredChartData]);
+  const { totalVisitors, totalInquiries } =
+    getDashboardTotals(filteredChartData);
 
-  const totalProperties = useMemo(() => {
-    return getDashboardPropertiesTotal(properties, timeRange);
-  }, [timeRange]);
+  const totalProperties = getDashboardPropertiesTotal(properties, timeRange);
+  const activeProperties = getActiveListingTotal(properties, timeRange);
 
-  const activeProperties = useMemo(() => {
-    return getActiveListingTotal(properties, timeRange);
-  }, [timeRange]);
-
-  const dashboardStats = useMemo(
-    () => [
-      {
-        title: "Total Inquiries",
-        description: "Total number of inquiries",
-        value: totalInquiries,
-      },
-      {
-        title: "Total Visitors",
-        description: "Total number of visitors",
-        value: totalVisitors,
-      },
-      {
-        title: "Total Properties",
-        description: "Total number of properties",
-        value: totalProperties,
-      },
-      {
-        title: "Active Listings",
-        description: "Total number of active listings",
-        value: activeProperties,
-      },
-    ],
-    [totalInquiries, totalVisitors, totalProperties, activeProperties]
-  );
+  const dashboardStats = [
+    {
+      title: "Total Inquiries",
+      description: "Total number of inquiries",
+      value: totalInquiries,
+    },
+    {
+      title: "Total Visitors",
+      description: "Total number of visitors",
+      value: totalVisitors,
+    },
+    {
+      title: "Total Properties",
+      description: "Total number of properties",
+      value: totalProperties,
+    },
+    {
+      title: "Active Listings",
+      description: "Total number of active listings",
+      value: activeProperties,
+    },
+  ];
 
   return (
     <div>

@@ -6,7 +6,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-// import { inquiries } from "@/data/data";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 
@@ -26,7 +25,6 @@ import { CircleCheck, CircleDot, MoreVerticalIcon, Timer } from "lucide-react";
 
 export default function InquiresTable() {
   const { inquiresData, updateInquiryStatus } = useInquiries();
-  console.log(inquiresData, "inquiresData");
 
   const handleStatusChange = (id: string, value: string) => {
     updateInquiryStatus(id, value);
