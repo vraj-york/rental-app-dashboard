@@ -108,8 +108,6 @@ export const inquiries = [
   },
 ]
 
-
-
 export const properties = [
   {
     id: "prop-1",
