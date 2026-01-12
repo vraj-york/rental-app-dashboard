@@ -69,7 +69,7 @@ export default function Page() {
     <div>
       <div className="grid grid-cols-1 gap-4 md:p-6 p-4">
         <div className="flex justify-between items-center">
-          <div className="text-lg font-bold">Welcome Back😊!</div>
+          <div className="text-lg font-bold">Welcome Back!</div>
           <Select
             value={timeRange}
             onValueChange={(value) =>
