@@ -72,6 +72,7 @@ export const inquiries = [
     propertyName: "2BHK Apartment - Andheri",
     status: "New",
     contactNumber: "+91 98765 43210",
+    inquiryDate: "05-01-26",
   },
   {
     id: "inq-2",
@@ -79,6 +80,7 @@ export const inquiries = [
     propertyName: "Studio Flat - Koramangala",
     status: "Contacted",
     contactNumber: "+91 91234 56789",
+    inquiryDate: "04-01-26",
   },
   {
     id: "inq-3",
@@ -86,6 +88,7 @@ export const inquiries = [
     propertyName: "3BHK Villa - Whitefield",
     status: "Contacted",
     contactNumber: "+91 99887 66554",
+    inquiryDate: "03-01-26",
   },
   {
     id: "inq-4",
@@ -93,6 +96,7 @@ export const inquiries = [
     propertyName: "1BHK Apartment - Powai",
     status: "Closed",
     contactNumber: "+91 90909 80808",
+    inquiryDate: "01-01-26",
   },
   {
     id: "inq-5",
@@ -100,8 +104,11 @@ export const inquiries = [
     propertyName: "2BHK Flat - HSR Layout",
     status: "New",
     contactNumber: "+91 95555 44433",
+    inquiryDate: "06-01-26",
   },
 ]
+
+
 
 export const properties = [
   {

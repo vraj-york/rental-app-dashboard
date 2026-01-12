@@ -26,6 +26,7 @@ import { CircleCheck, CircleDot, MoreVerticalIcon, Timer } from "lucide-react";
 
 export default function InquiresTable() {
   const { inquiresData, updateInquiryStatus } = useInquiries();
+  console.log(inquiresData, "inquiresData");
 
   const handleStatusChange = (id: string, value: string) => {
     updateInquiryStatus(id, value);
@@ -43,15 +44,22 @@ export default function InquiresTable() {
             <TableHeader>
               <TableRow>
                 <TableHead className="font-bold">Name</TableHead>
-                <TableHead className="font-bold">Status</TableHead>
                 <TableHead className="font-bold">Property Name</TableHead>
                 <TableHead className="font-bold">Contact Number</TableHead>
+                <TableHead className="font-bold">Inquiry Date</TableHead>
+                <TableHead className="font-bold">Status</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {inquiresData.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>{item.userName}</TableCell>
+
+                  <TableCell>{item.propertyName}</TableCell>
+                  <TableCell className="flex items-center">
+                    {item.contactNumber}
+                  </TableCell>
+                  <TableCell>{item.inquiryDate}</TableCell>
                   <TableCell className="flex items-center">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
@@ -135,10 +143,6 @@ export default function InquiresTable() {
                           return null;
                       }
                     })()}
-                  </TableCell>
-                  <TableCell>{item.propertyName}</TableCell>
-                  <TableCell className="flex items-center">
-                    {item.contactNumber}
                   </TableCell>
                 </TableRow>
               ))}

@@ -9,6 +9,7 @@ export type Inquiry={
     propertyName: string;
     status: string;
     contactNumber: string;
+    inquiryDate:string;
 }
 
 const STORAGE_KEY = "inquiries";
