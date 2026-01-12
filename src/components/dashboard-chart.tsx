@@ -39,10 +39,7 @@ interface ChartAreaInteractiveProps {
   chartData: ChartPoint[];
 }
 
-export function ChartAreaInteractive({
-  timeRange = "90d",
-  chartData,
-}: ChartAreaInteractiveProps) {
+export function ChartAreaInteractive({ chartData }: ChartAreaInteractiveProps) {
   // Use the filtered data passed from parent component
   const filteredData = chartData;
 

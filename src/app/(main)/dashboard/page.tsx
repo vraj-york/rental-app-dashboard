@@ -106,10 +106,7 @@ export default function Page() {
           ))}
         </div>
         <div className="visitors-chart">
-          <ChartAreaInteractive
-            timeRange={timeRange}
-            chartData={filteredChartData}
-          />
+          <ChartAreaInteractive chartData={filteredChartData} />
         </div>
         <Separator />
         <div className="inquires-container">
