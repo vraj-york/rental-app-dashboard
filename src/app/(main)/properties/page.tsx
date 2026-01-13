@@ -1,6 +1,5 @@
 "use client";
 
-import { properties } from "@/data/data";
 import {
   Card,
   CardContent,
@@ -12,26 +11,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Eye, Locate, MapPin, MessageCircleMore } from "lucide-react";
-
-// Generate a gradient image URL based on property ID for variety
-const getPropertyImage = (id: string) => {
-  const gradients = [
-    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1568605117035-4c2c0e0c0e0e?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1560448075-cbc16bb4af33?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1560448204-61dc5c5e57d1?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1560448204-61dc5c5e57d1?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
-    "https://images.unsplash.com/photo-1568605117035-4c2c0e0c0e0e?w=800&h=600&fit=crop",
-  ];
-  const index = parseInt(id.split("-")[1]) % gradients.length;
-  return gradients[index];
-};
+import { Eye, MapPin, MessageCircleMore } from "lucide-react";
+import { useProperties } from "@/hooks/useProperties";
+import AddPropertyDialog from "@/components/add-property-dialog";
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -47,32 +29,40 @@ const getStatusColor = (status: string) => {
 };
 
 export default function Page() {
+  const { propertiesData } = useProperties();
+
   return (
     <div className="p-4 md:p-6">
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold mb-2">Properties</h1>
-        <p className="text-muted-foreground">
-          Manage and view all your property listings
-        </p>
+      <div className="mb-6 flex justify-between items-center">
+        <div>
+          <h1 className="text-2xl font-bold mb-2">Properties</h1>
+          <p className="text-muted-foreground">
+            Manage and view all your property listings
+          </p>
+        </div>
+        <AddPropertyDialog type="add" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
-        {properties.map((property) => (
+        {propertiesData.map((property) => (
           <Card key={property.id} className="gap-3 pt-0">
             <div className="relative w-full h-48">
-              <Image
-                src={getPropertyImage(property.id)}
-                alt={property.name}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-110 rounded-t-xl"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-
+              {property.image && property.name && (
+                <Image
+                  src={property.image}
+                  alt={property.name}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-110 rounded-t-xl"
+                />
+              )}
+              <div className="absolute top-2 right-2 z-1">
+                <AddPropertyDialog type="edit" data={property} />
+              </div>
               <div className="absolute inset-0 from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
             <CardHeader className="pb-0">
-              <CardTitle className="text-lg line-clamp-1 group-hover:text-primary transition-colors">
+              <CardTitle className="flex justify-between text-lg group-hover:text-primary transition-colors">
                 {property.name}
               </CardTitle>
               <CardDescription className="flex items-center gap-2">
@@ -81,24 +71,28 @@ export default function Page() {
                   {property.location}
                 </div>
                 <div>
-                  <Badge
-                    className={cn(
-                      "backdrop-blur-sm border",
-                      getStatusColor(property.status)
-                    )}
-                  >
-                    {property.status.charAt(0).toUpperCase() +
-                      property.status.slice(1)}
-                  </Badge>
+                  {property.status && (
+                    <Badge
+                      className={cn(
+                        "backdrop-blur-sm border",
+                        getStatusColor(property.status)
+                      )}
+                    >
+                      {property.status.charAt(0).toUpperCase() +
+                        property.status.slice(1)}
+                    </Badge>
+                  )}
                 </div>
               </CardDescription>
             </CardHeader>
 
             <CardContent className="space-y-3">
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                  ₹{property.rent.toLocaleString()}
-                </span>
+              <div className="flex items-baseline gap-1">
+                {property.rent && (
+                  <span className="text-2xl font-bold text-primary">
+                    ₹{property.rent.toLocaleString()}
+                  </span>
+                )}
                 <span className="text-sm text-muted-foreground">/month</span>
               </div>
 
@@ -114,9 +108,11 @@ export default function Page() {
               </div>
             </CardContent>
 
-            <CardFooter className="pt-0 text-xs text-muted-foreground">
-              Updated {property.lastUpdated}
-            </CardFooter>
+            {property.lastUpdated && (
+              <CardFooter className="pt-0 text-xs text-muted-foreground">
+                Updated {property.lastUpdated}
+              </CardFooter>
+            )}
           </Card>
         ))}
       </div>

@@ -1,5 +1,5 @@
 
-import { getActiveListingTotal, getDashboardPropertiesTotal, getDashboardTotals } from "@/utils/dashboard";
+// import { getActiveListingTotal, getDashboardPropertiesTotal, getDashboardTotals } from "@/utils/dashboard";
 
 export const chartData = [
   { date: "2025-04-01", visitors: 222, inquiries: 110 },
@@ -110,7 +110,7 @@ export const inquiries = [
 
 export const properties = [
   {
-    id: "prop-1",
+    id: "1",
     name: "2BHK Apartment - Andheri East",
     location: "Mumbai",
     rent: 35000,
@@ -119,9 +119,11 @@ export const properties = [
     enquiries: 12,
     createdAt: "2025-12-01",
     lastUpdated: "2 days ago",
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-2",
+    id: "2",
     name: "1BHK Apartment - Powai",
     location: "Mumbai",
     rent: 28000,
@@ -130,9 +132,11 @@ export const properties = [
     enquiries: 8,
     createdAt: "2025-11-20",
     lastUpdated: "5 days ago",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-3",
+    id: "3",
     name: "Studio Flat - Koramangala",
     location: "Bangalore",
     rent: 22000,
@@ -141,9 +145,11 @@ export const properties = [
     enquiries: 15,
     createdAt: "2025-10-15",
     lastUpdated: "1 day ago",
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-4",
+    id: "4",
     name: "3BHK Villa - Whitefield",
     location: "Bangalore",
     rent: 55000,
@@ -152,9 +158,11 @@ export const properties = [
     enquiries: 3,
     createdAt: "2025-09-05",
     lastUpdated: "10 days ago",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-5",
+    id: "5",
     name: "2BHK Flat - HSR Layout",
     location: "Bangalore",
     rent: 32000,
@@ -163,9 +171,11 @@ export const properties = [
     enquiries: 9,
     createdAt: "2025-11-01",
     lastUpdated: "3 days ago",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-6",
+    id: "6",
     name: "1BHK Apartment - Baner",
     location: "Pune",
     rent: 20000,
@@ -174,9 +184,11 @@ export const properties = [
     enquiries: 0,
     createdAt: "2025-12-20",
     lastUpdated: "Today",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-7",
+    id: "7",
     name: "2BHK Apartment - Wakad",
     location: "Pune",
     rent: 26000,
@@ -185,10 +197,11 @@ export const properties = [
     enquiries: 6,
     createdAt: "2025-10-10",
     lastUpdated: "6 days ago",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
-  
   {
-    id: "prop-8",
+    id: "8",
     name: "3BHK Apartment - Gachibowli",
     location: "Hyderabad",
     rent: 42000,
@@ -197,9 +210,11 @@ export const properties = [
     enquiries: 11,
     createdAt: "2025-09-18",
     lastUpdated: "4 days ago",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-9",
+    id: "9",
     name: "2BHK Flat - Indiranagar",
     location: "Bangalore",
     rent: 38000,
@@ -208,9 +223,11 @@ export const properties = [
     enquiries: 4,
     createdAt: "2025-08-25",
     lastUpdated: "15 days ago",
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-10",
+    id: "10",
     name: "1RK Studio - Viman Nagar",
     location: "Pune",
     rent: 18000,
@@ -219,9 +236,11 @@ export const properties = [
     enquiries: 7,
     createdAt: "2025-11-12",
     lastUpdated: "2 days ago",
+    image:
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
   },
   {
-    id: "prop-11",
+    id: "11",
     name: "1RK Studio - Viman Nagar",
     location: "Pune",
     rent: 18000,
@@ -230,10 +249,13 @@ export const properties = [
     enquiries: 7,
     createdAt: "2025-11-12",
     lastUpdated: "2 days ago",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop",
   },
-]
+];
 
-// const { totalVisitors, totalInquiries } = getDashboardTotals(chartData);
+
+// const { totalVisitors, totalInquiries } = getDashboardTotals(chartData);s
 // const totalProperties = getDashboardPropertiesTotal(properties);
 // const ActiveProperteis= getActiveListingTotal(properties) 
 
