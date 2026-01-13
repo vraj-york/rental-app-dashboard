@@ -35,7 +35,7 @@ export default function Page() {
     <div className="p-4 md:p-6">
       <div className="mb-6 flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold mb-2">Properties</h1>
+          <h1 className="text-lg font-bold">Properties</h1>
           <p className="text-muted-foreground">
             Manage and view all your property listings
           </p>

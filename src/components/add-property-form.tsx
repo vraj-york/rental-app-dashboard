@@ -56,7 +56,6 @@ export function AddPropertyForm({
     },
   });
 
-  // Pre-populate form when editing
   useEffect(() => {
     if (type === "edit" && data) {
       form.reset({
@@ -74,9 +73,6 @@ export function AddPropertyForm({
   async function onSubmit(values: z.output<typeof formSchema>) {
     setIsLoading(true);
     setShowSuccess(false);
-
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
 
     if (type === "edit" && data?.id) {
       const updatedData: Property = {
