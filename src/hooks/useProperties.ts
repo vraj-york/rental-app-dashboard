@@ -34,6 +34,7 @@ if (stored) {
 },[])
 
 useEffect(() => {
+  console.log("property updated on local storage")
     if (properties.length > 0) {
       localStorage.setItem(
         STORAGE_KEY,
@@ -44,14 +45,12 @@ useEffect(() => {
 
   const addProperty = (property: Property) => {
     setPropertiesData((prev) => [property, ...prev]);
-    console.log("Property added")
   };
 
   const updateProperty = (property: Property) => {
     setPropertiesData((prev) =>
       prev.map((p) => (p.id === property.id ? { ...property } : p))
     );
-    console.log("Property updated");
   };
 
 
