@@ -5,14 +5,14 @@ export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname
   const email = req.cookies.get('email')?.value ?? null
 
-  // Redirect root path to /dashboard if logged in, otherwise to /login
+
   if (pathname === '/') {
     const url = req.nextUrl.clone()
     url.pathname = email ? '/dashboard' : '/login'
     return NextResponse.redirect(url)
   }
 
-  // Redirect logged-in users away from login page
+
   if (pathname.startsWith('/login')) {
     if (email) {
       const url = req.nextUrl.clone()
@@ -22,7 +22,7 @@ export function middleware(req: NextRequest) {
     return NextResponse.next()
   }
 
-  // Protect routes like /dashboard and /properties
+
   const protectedRoutes = ['/dashboard', '/properties']
   if (protectedRoutes.some(path => pathname.startsWith(path))) {
     if (!email) {

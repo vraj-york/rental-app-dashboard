@@ -24,9 +24,9 @@ import {
 import { Spinner } from "./ui/spinner";
 
 const formSchema = z.object({
-  name: z.string().max(50),
-  location: z.string().max(100),
-  rent: z.number().nonnegative(),
+  name: z.string().min(1, "Name is required").max(50),
+  location: z.string().min(1, "Location is required").max(100),
+  rent: z.number().nonnegative("Rent must be 0 or more"),
   status: z.enum(["active", "inactive", "draft"]),
   image: z.string(),
 });
@@ -49,7 +49,7 @@ export function AddPropertyForm({
     defaultValues: {
       name: "",
       location: "",
-      rent: 0,
+      rent: undefined,
       status: "active",
       image:
         "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
@@ -64,7 +64,9 @@ export function AddPropertyForm({
         location: data.location || "",
         rent: data.rent || 0,
         status: (data.status as "active" | "inactive" | "draft") || "active",
-        image: data.image || "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
+        image:
+          data.image ||
+          "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop",
       });
     }
   }, [type, data, form]);
@@ -207,7 +209,9 @@ export function AddPropertyForm({
         {showSuccess ? (
           <div className="flex items-center gap-2 text-green-600 dark:text-green-400 text-sm font-medium">
             <span>✓</span>
-            <span>{type === "edit" ? "Property updated" : "Property added"}</span>
+            <span>
+              {type === "edit" ? "Property updated" : "Property added"}
+            </span>
           </div>
         ) : (
           <Button type="submit" disabled={isLoading}>
@@ -216,8 +220,10 @@ export function AddPropertyForm({
                 <Spinner className="mr-2" />
                 {type === "edit" ? "Updating..." : "Adding..."}
               </>
+            ) : type === "edit" ? (
+              "Update Property"
             ) : (
-              type === "edit" ? "Update Property" : "Add Property"
+              "Add Property"
             )}
           </Button>
         )}

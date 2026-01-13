@@ -18,8 +18,6 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 
 export function AppSidebar() {
-  // Menu items.
-
   const route = useRouter();
   const pathname = usePathname();
   const items = [
