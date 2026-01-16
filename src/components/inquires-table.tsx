@@ -20,11 +20,17 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Separator } from "./ui/separator";
-import { useInquiries } from "@/hooks/useInquiries";
 import { CircleCheck, CircleDot, MoreVerticalIcon, Timer } from "lucide-react";
+import { useInquiriesStore } from "@/store/useInquiries";
+import { useEffect } from "react";
 
 export default function InquiresTable() {
-  const { inquiresData, updateInquiryStatus } = useInquiries();
+  const { inquiriesData, loadInquiries, updateInquiryStatus } =
+    useInquiriesStore();
+
+  useEffect(() => {
+    loadInquiries();
+  }, [loadInquiries]);
 
   const handleStatusChange = (id: string, value: string) => {
     updateInquiryStatus(id, value);
@@ -49,7 +55,7 @@ export default function InquiresTable() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {inquiresData.map((item) => (
+              {inquiriesData.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>{item.userName}</TableCell>
 

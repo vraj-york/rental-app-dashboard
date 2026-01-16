@@ -13,7 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useProperties, Property } from "@/hooks/useProperties";
 import {
   Select,
   SelectContent,
@@ -22,6 +21,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Spinner } from "./ui/spinner";
+import { Property, usePropertieStore } from "@/store/useProperties";
 
 const formSchema = z.object({
   name: z.string().min(1, "Name is required").max(50),
@@ -40,7 +40,7 @@ export function PropertyForm({
   data?: Property;
   onClose?: () => void;
 }) {
-  const { addProperty, updateProperty, propertiesData } = useProperties();
+  const { addProperty, updateProperty, propertiesData } = usePropertieStore();
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -85,7 +85,7 @@ export function PropertyForm({
       setTimeout(() => {
         setIsLoading(false);
         onClose?.();
-      }, 1000);
+      }, 500);
     } else {
       const newData: Property = {
         ...values,

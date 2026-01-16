@@ -12,9 +12,9 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Eye, MapPin, MessageCircleMore } from "lucide-react";
-import { useProperties } from "@/hooks/useProperties";
-import AddPropertyDialog from "@/components/property-model";
 import PropertyModel from "@/components/property-model";
+import { usePropertieStore } from "@/store/useProperties";
+import { useEffect } from "react";
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -30,7 +30,11 @@ const getStatusColor = (status: string) => {
 };
 
 export default function Page() {
-  const { propertiesData } = useProperties();
+  const { propertiesData, loadProperties } = usePropertieStore();
+
+  useEffect(() => {
+    loadProperties();
+  }, [loadProperties]);
 
   return (
     <div className="p-4 md:p-6">
