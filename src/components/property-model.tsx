@@ -9,11 +9,11 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
-import { Edit, MoreVerticalIcon, Pen, Plus } from "lucide-react";
-import { AddPropertyForm } from "./add-property-form";
+import { Pen, Plus } from "lucide-react";
+import { PropertyForm } from "./property-form";
 import { Property } from "@/hooks/useProperties";
 
-export default function AddPropertyDialog({
+export default function PropertyModel({
   type,
   data,
 }: {
@@ -44,7 +44,7 @@ export default function AddPropertyDialog({
                 : "Update Property Details"}
             </DialogTitle>
           </DialogHeader>
-          <AddPropertyForm
+          <PropertyForm
             type={type}
             data={data}
             onClose={() => setOpen(false)}

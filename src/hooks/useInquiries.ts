@@ -31,6 +31,7 @@ if (stored) {
 },[])
 
 useEffect(() => {
+  console.log("inquiries updated on local storage")
     if (inquiries.length > 0) {
       localStorage.setItem(
         STORAGE_KEY,

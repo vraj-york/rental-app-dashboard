@@ -13,7 +13,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Eye, MapPin, MessageCircleMore } from "lucide-react";
 import { useProperties } from "@/hooks/useProperties";
-import AddPropertyDialog from "@/components/add-property-dialog";
+import AddPropertyDialog from "@/components/property-model";
+import PropertyModel from "@/components/property-model";
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -40,7 +41,7 @@ export default function Page() {
             Manage and view all your property listings
           </p>
         </div>
-        <AddPropertyDialog type="add" />
+        <PropertyModel type="add" />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 ">
@@ -56,7 +57,7 @@ export default function Page() {
                 />
               )}
               <div className="absolute top-2 right-2 z-1">
-                <AddPropertyDialog type="edit" data={property} />
+                <PropertyModel type="edit" data={property} />
               </div>
               <div className="absolute inset-0 from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>

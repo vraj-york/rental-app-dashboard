@@ -31,7 +31,7 @@ const formSchema = z.object({
   image: z.string(),
 });
 
-export function AddPropertyForm({
+export function PropertyForm({
   type = "add",
   data,
   onClose,

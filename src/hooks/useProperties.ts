@@ -20,6 +20,7 @@ const STORAGE_KEY = "properties";
 
 export const useProperties=()=>{
 const [propertiesData, setPropertiesData]= useState<Property[]>([]);
+
 useEffect(()=>{
 const stored= localStorage.getItem(STORAGE_KEY);
 if (stored) {
