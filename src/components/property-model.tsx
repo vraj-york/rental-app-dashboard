@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -9,30 +9,50 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
-import { Pen, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import { PropertyForm } from "./property-form";
-import { Property } from "@/hooks/useProperties";
+import { Property } from "@/store/useProperties";
 
-export default function PropertyModel({
+const PropertyModel = React.memo(function PropertyModel({
   type,
   data,
+  isModelOpen,
+  onClose,
+  setIsModelOpen,
 }: {
   type: "add" | "edit";
-  data?: Property;
+  data?: Property | null;
+  isModelOpen?: boolean;
+  onClose?: () => void;
+  setIsModelOpen?: (open: boolean) => void;
 }) {
-  const [open, setOpen] = useState(false);
+  console.log("Rendered PropertyModel Type", type);
+
+  const handleOpenChange = (open: boolean) => {
+    if (setIsModelOpen) {
+      setIsModelOpen(open);
+    }
+    if (!open && onClose) {
+      onClose();
+    }
+  };
+
+  const handleFormClose = () => {
+    if (setIsModelOpen) {
+      setIsModelOpen(false);
+    }
+    if (onClose) {
+      onClose();
+    }
+  };
 
   return (
     <div>
-      <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog open={isModelOpen} onOpenChange={handleOpenChange}>
         <DialogTrigger asChild>
-          {type === "add" ? (
+          {type === "add" && (
             <Button>
               <Plus /> Add Property
-            </Button>
-          ) : (
-            <Button size={"icon-sm"} variant={"outline"}>
-              <Pen size={6} />
             </Button>
           )}
         </DialogTrigger>
@@ -44,13 +64,11 @@ export default function PropertyModel({
                 : "Update Property Details"}
             </DialogTitle>
           </DialogHeader>
-          <PropertyForm
-            type={type}
-            data={data}
-            onClose={() => setOpen(false)}
-          />
+          <PropertyForm type={type} data={data} onClose={handleFormClose} />
         </DialogContent>
       </Dialog>
     </div>
   );
-}
+});
+
+export default PropertyModel;

@@ -37,7 +37,7 @@ export function PropertyForm({
   onClose,
 }: {
   type?: "add" | "edit";
-  data?: Property;
+  data?: Property | null;
   onClose?: () => void;
 }) {
   const { addProperty, updateProperty, propertiesData } = usePropertieStore();
@@ -71,6 +71,7 @@ export function PropertyForm({
   }, [type, data, form]);
 
   async function onSubmit(values: z.output<typeof formSchema>) {
+    console.log("On Submit function called");
     setIsLoading(true);
     setShowSuccess(false);
 
@@ -210,7 +211,7 @@ export function PropertyForm({
             </span>
           </div>
         ) : (
-          <Button type="submit" disabled={isLoading}>
+          <Button type="submit" disabled={isLoading} className="cursor-pointer">
             {isLoading ? (
               <>
                 <Spinner className="mr-2" />
