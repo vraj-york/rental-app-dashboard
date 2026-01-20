@@ -5,7 +5,6 @@ import { Property, usePropertieStore } from "@/store/useProperties";
 import { useCallback, useEffect, useState } from "react";
 import PropertyCard from "@/components/property-card";
 import { Spinner } from "@/components/ui/spinner";
-import { fa } from "zod/v4/locales";
 
 export default function Page() {
   const { propertiesData, loadProperties } = usePropertieStore();
