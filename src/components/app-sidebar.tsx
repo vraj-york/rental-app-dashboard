@@ -11,7 +11,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Home, LayoutGrid, LogOut } from "lucide-react";
+import { Database, Home, LayoutGrid, LogOut } from "lucide-react";
 import Image from "next/image";
 import Cookie from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
@@ -30,6 +30,11 @@ export function AppSidebar() {
       title: "Properties",
       url: "/properties",
       icon: Home,
+    },
+    {
+      title: "API Data",
+      url: "/api-data",
+      icon: Database,
     },
   ];
 
