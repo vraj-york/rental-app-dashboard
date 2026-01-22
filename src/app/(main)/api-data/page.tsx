@@ -95,6 +95,8 @@ export default function Page() {
     }
   };
 
+  console.log("Rendering API Data Page");
+
   return (
     <div className="flex flex-col h-screen">
       <div>

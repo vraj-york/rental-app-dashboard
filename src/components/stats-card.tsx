@@ -20,6 +20,7 @@ export default function StatsCard({
   action,
   value,
 }: StatsCardProps) {
+  console.log(`Rendering StatsCard: ${title}`);
   return (
     <Card className="@container/card">
       <CardHeader>

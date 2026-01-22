@@ -43,6 +43,7 @@ export function ChartAreaInteractive({ chartData }: ChartAreaInteractiveProps) {
   // Use the filtered data passed from parent component
   const filteredData = chartData;
 
+  console.log("Rendering DashboardChart Component");
   return (
     <Card className="pt-0">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">

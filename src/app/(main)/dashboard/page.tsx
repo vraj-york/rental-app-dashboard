@@ -18,7 +18,7 @@ import {
   getDashboardPropertiesTotal,
   getDashboardTotals,
 } from "@/utils/dashboard";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 export default function Page() {
   const [timeRange, setTimeRange] = useState<"7d" | "30d" | "90d">("90d");
@@ -53,7 +53,7 @@ export default function Page() {
       value: activeProperties,
     },
   ];
-
+  console.log("Rendering Dashboard Page");
   return (
     <div>
       <div className="grid grid-cols-1 gap-4 md:p-6 p-4">

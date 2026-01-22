@@ -35,7 +35,7 @@ export default function InquiresTable() {
   const handleStatusChange = (id: string, value: string) => {
     updateInquiryStatus(id, value);
   };
-
+  console.log("Rendering InquiresTable Component");
   return (
     <div>
       <Card>
