@@ -37,7 +37,6 @@ type Data = {
   }>;
 };
 
-// react,javascript,typescript,tailwindcss,html,css,nextjs, redux, git, github, graphql queries, rest apis, ant design, shadcn ui, responsive design, landing page design, local storage, store authentication tokens in cookies
 export default function Page() {
   const [page, setPage] = useState(1);
   const [pageLimit, setPageLimit] = useState<number>(10);
